@@ -2,6 +2,13 @@
 
 ## A collection of Middlewares for Express
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/48a4f566a0ab37a4f5d4/maintainability)](https://codeclimate.com/github/algo7/express-suite/maintainability)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/230d4840e65c45e2bc7682ee4659a7c9)](https://www.codacy.com/manual/algo7/express-suite?utm_source=github.com&utm_medium=referral&utm_content=algo7/express-suite&utm_campaign=Badge_Grade)
+[![](https://img.shields.io/github/license/algo7/express-suite)]()
+[![](https://img.shields.io/github/issues/algo7/express-suite)]()
+[![](https://img.shields.io/github/forks/algo7/express-suite)]()
+[![](https://img.shields.io/github/stars/algo7/express-suite)]()
+
 ## Installation
 
 ```
@@ -48,9 +55,11 @@ app.listen(5003);
 
 The poject uses **Jest** for testing.
 
-First install the dependencies then run `npm test`
+Clone the Github repo. first. Install the dependencies then run `npm test`
 
 ```
+$ git clone https://github.com/algo7/express-suite.git
+$ cd express-suite
 $ npm i
 $ npm test
 ```

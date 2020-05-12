@@ -3,7 +3,7 @@
 * Takes in the **express()** function
 * @param {Object} app - The **express()** function
 * @param {Object} [opt] - The options
-* @param {String} [opt.path='/x'] - The redirect path
+* @param {String} [opt.path] - The redirect path
 * @example  //For the option
 { path: '/PnF' }
 *
@@ -76,7 +76,81 @@ const routeCheck = (app, opt) => {
 
 };
 
+//Route Validation Function
+/**
+ * 
+ * @param {Object} [opt] - The options
+ * @param {Boolean} [opt.checkGet]
+ * @returns {function():void}
+ */
+const inputValidation = (opt) => {
+
+
+    return (req, res, next) => {
+
+        //Solve cors issue || Browser will send an OPTIONS request
+        //that expects a HTTP staus code of 200 
+        if (req.method === 'OPTIONS') {
+            return res.sendStatus(200);
+        }
+
+        //Let the get method pass
+        if (req.method === 'GET') {
+            return next();
+        }
+
+        //Deconstruct the request to get the body out
+        const { body, } = req;
+
+        //Check if the input is any flase value 
+        //(when nothing is pass into the middleware)
+        if (!body) {
+
+            res.status(400).json({ msg: 'Some fields are missing!', });
+            return;
+        }
+
+        //Array for storing non-0 values
+        let checkZ = [];
+
+        for (const key in body) {
+
+            const element = body[key];
+
+            if (element !== 0) {
+                checkZ.push(element);
+            }
+
+        }
+
+        //Make sure the array is not empty
+        if (checkZ.length === 0) {
+
+            res.status(400).json({ msg: 'Some fields are missing!', });
+            return;
+        }
+
+        //Check for falsy values in the array without 0s
+        for (let index = 0; index < checkZ.length; index++) {
+            const nonZinput = checkZ[index];
+
+            //Return false if there is any falsy value
+            if (!nonZinput) {
+
+                res.status(400).json({ msg: 'Some fields are missing!', });
+                return;
+            }
+
+        }
+
+        return next();
+
+    };
+};
+
+
 
 module.exports = {
     routeCheck,
+    inputValidation,
 };
