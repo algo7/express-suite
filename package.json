@@ -1,0 +1,30 @@
+{
+  "name": "express-suite",
+  "version": "1.0.0",
+  "description": "A collection of useful express middlewares",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algo7/express-suite.git"
+  },
+  "keywords": [
+    "express",
+    "middlewares"
+  ],
+  "author": "algo7",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/algo7/express-suite/issues"
+  },
+  "homepage": "https://github.com/algo7/express-suite#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "jest": "^26.0.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0"
+  }
+}
