@@ -12,7 +12,8 @@
   },
   "keywords": [
     "express",
-    "middlewares"
+    "middlewares",
+    "validation"
   ],
   "author": "algo7",
   "license": "Apache License 2.0",
