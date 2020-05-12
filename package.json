@@ -15,7 +15,7 @@
     "middlewares"
   ],
   "author": "algo7",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "Apache License 2.0",
   "bugs": {
     "url": "https://github.com/algo7/express-suite/issues"
   },
