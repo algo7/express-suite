@@ -20,7 +20,7 @@ If no config option is passed, the middleware will send a **404** to those reque
 const express = require('express');
 
 //Require the routeCheck Middleware
-const routeCheck = require('../app').routeCheck;
+const { routeCheck } = require('express-suite');
 
 //Initialize the App
 const app = express();
