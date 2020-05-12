@@ -2,6 +2,12 @@
 
 ## A collection of Middlewares for Express
 
+## Installation
+
+```
+$ npm i express-suite
+```
+
 ### routeCheck
 
 This middleware will handle all requests to non-registered routes for you.
@@ -37,3 +43,18 @@ app.use(routeCheck(app, option));
 //Start the server
 app.listen(5003);
 ```
+
+## Tests
+
+The poject uses **Jest** for testing.
+
+First install the dependencies then run `npm test`
+
+```
+$ npm i
+$ npm test
+```
+
+## License
+
+[Apache License 2.0](https://github.com/algo7/express-suite/blob/master/LICENSE)
