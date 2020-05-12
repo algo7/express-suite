@@ -62,6 +62,10 @@ const routeCheck = (app, opt) => {
 
         //Redirect to 404 PnF if match failed
         if (!pathExists) {
+
+            if (!opt) {
+                return res.sendStatus(404);
+            }
             return res.redirect(opt.path);
         }
 
