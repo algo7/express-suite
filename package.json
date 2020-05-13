@@ -1,6 +1,6 @@
 {
   "name": "express-suite",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A collection of useful express middlewares",
   "main": "app.js",
   "scripts": {
