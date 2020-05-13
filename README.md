@@ -108,7 +108,7 @@ The poject uses **Jest** for testing.
 
 Clone the Github repo. first. Install the dependencies then run `npm test`
 
-```
+```bash
 $ git clone https://github.com/algo7/express-suite.git
 $ cd express-suite
 $ npm i
