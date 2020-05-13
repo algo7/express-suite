@@ -56,7 +56,13 @@ app.listen(5003);
 
 ## emptyInputCheck
 
-This middleware validates all inputs to all routes (unless used at router level) by checking the **body** of both POST and GET requests.
+This middleware checks for all empty inputs to all routes (unless used at a router level) by checking the **body** of both POST and GET requests.
+
+Note: 0 does count as a valid input.
+
+All empty inputs will be met with a **400** and the message: `{ msg: 'Some fields are missing!' }`.
+
+You can specify the middleware to skip the check for **GET** requests in the config option.
 
 ```javascript
 //Dependencies
@@ -69,7 +75,7 @@ const { emptyInputCheck } = require('../app');
 //Initialize the App
 const app = express();
 
-// bodyParser Middleware
+//bodyParser Middleware
 app.use(
   bodyParser.json({
     limit: '5mb',
@@ -78,9 +84,11 @@ app.use(
 );
 
 //The emptyInputCheck Middleware
+//It's important that we place the our middleware after the bodyParser middleware
+//Make sure you call the emptyInputCheck middleware before the routes are loaded
 app.use(
   emptyInputCheck({
-    checkGet: true,
+    checkGet: true, //Wether to check the GET requests or not
   }),
 );
 
