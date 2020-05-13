@@ -78,13 +78,11 @@ const routeCheck = (app, opt) => {
 
 //Route Validation Function
 /**
- * 
- * @param {Object} [opt] - The options
- * @param {Boolean} [opt.checkGet]
  * @returns {function():void}
  */
-const inputValidation = (opt) => {
-
+const inputValidation = ({
+    checkGet = true,
+}) => {
 
     return (req, res, next) => {
 
@@ -94,10 +92,14 @@ const inputValidation = (opt) => {
             return res.sendStatus(200);
         }
 
-        //Let the get method pass
-        if (req.method === 'GET') {
-            return next();
+        //Wether to check the body of GET requests as well
+        if (!checkGet) {
+            //Let the get method pass
+            if (req.method === 'GET') {
+                return next();
+            }
         }
+
 
         //Deconstruct the request to get the body out
         const { body, } = req;
@@ -147,7 +149,6 @@ const inputValidation = (opt) => {
 
     };
 };
-
 
 
 module.exports = {

@@ -8,6 +8,8 @@
 [![](https://img.shields.io/github/issues/algo7/express-suite)]()
 [![](https://img.shields.io/github/forks/algo7/express-suite)]()
 [![](https://img.shields.io/github/stars/algo7/express-suite)]()
+[![npm version](https://badge.fury.io/js/express-suite.svg)](https://badge.fury.io/js/express-suite)
+[![](https://img.shields.io/npm/dt/express-suite)]()
 
 ## Installation
 
