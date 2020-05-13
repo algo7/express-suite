@@ -1,14 +1,14 @@
 //Dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
-const { routeCheck, inputValidation, } = require('../app');
+const { routeCheck, emptyInputCheck, } = require('../app');
 //Global Constant
 const PORT = 5003;
 
 //Initialize the App
 const app = express();
 
-// bodyParser Middleware
+//bodyParser Middleware
 app.use(bodyParser.json({
     limit: '5mb',
     extended: true,
@@ -20,8 +20,8 @@ app.all('*', (req, res, next) => {
     next();
 });
 
-//The inputValidation middleware
-app.use(inputValidation({ checkGet: true, }));
+//The emptyInputCheck middleware
+app.use(emptyInputCheck({ checkGet: true, }));
 
 //Exists
 app.get('/', (req, res) => {
@@ -47,7 +47,7 @@ app.post('/', (req, res) => {
     });
 });
 
-
+//The routeCheck middleware
 app.use(routeCheck(app, { path: '/PnF', }));
 
 

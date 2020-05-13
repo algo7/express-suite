@@ -17,7 +17,7 @@
 $ npm i express-suite
 ```
 
-### routeCheck
+## routeCheck
 
 This middleware will handle all requests to non-registered routes for you.
 
@@ -26,6 +26,7 @@ In the config option, you can specify a route to handle all requests to non-exis
 If no config option is passed, the middleware will send a **404** to those requests.
 
 ```javascript
+//Dependencies
 const express = require('express');
 
 //Require the routeCheck Middleware
@@ -48,6 +49,46 @@ const option = {
 
 //It's important to use the routeCheck middleware after all routes are loaded
 app.use(routeCheck(app, option));
+
+//Start the server
+app.listen(5003);
+```
+
+## emptyInputCheck
+
+This middleware validates all inputs to all routes (unless used at router level) by checking the **body** of both POST and GET requests.
+
+```javascript
+//Dependencies
+const express = require('express');
+const bodyParser = require('body-parser');
+
+//Require the routeCheck Middleware
+const { emptyInputCheck } = require('../app');
+
+//Initialize the App
+const app = express();
+
+// bodyParser Middleware
+app.use(
+  bodyParser.json({
+    limit: '5mb',
+    extended: true,
+  }),
+);
+
+//The emptyInputCheck Middleware
+app.use(
+  emptyInputCheck({
+    checkGet: true,
+  }),
+);
+
+//Load Routes
+const example = require('./routes/example');
+
+//Use Routes
+app.use('/', example);
 
 //Start the server
 app.listen(5003);

@@ -80,7 +80,7 @@ const routeCheck = (app, opt) => {
 /**
  * @returns {function():void}
  */
-const inputValidation = ({
+const emptyInputCheck = ({
     checkGet = true,
 }) => {
 
@@ -153,5 +153,5 @@ const inputValidation = ({
 
 module.exports = {
     routeCheck,
-    inputValidation,
+    emptyInputCheck,
 };
