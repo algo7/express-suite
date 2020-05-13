@@ -104,7 +104,7 @@ app.use('/', example);
 app.listen(5003);
 ```
 
-> ## Tests
+## Tests
 
 The poject uses **Jest** for testing.
 
@@ -117,6 +117,6 @@ $ npm i
 $ npm test
 ```
 
-> ## License
+## License
 
 [Apache License 2.0](https://github.com/algo7/express-suite/blob/master/LICENSE)
