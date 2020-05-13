@@ -11,13 +11,15 @@
 [![npm version](https://badge.fury.io/js/express-suite.svg)](https://badge.fury.io/js/express-suite)
 [![](https://img.shields.io/npm/dt/express-suite)]()
 
+## :) More middlewares will be available as the time progresses.
+
 ## Installation
 
 ```
 $ npm i express-suite
 ```
 
-## routeCheck
+> ## routeCheck
 
 This middleware will handle all requests to non-registered routes for you.
 
@@ -54,7 +56,7 @@ app.use(routeCheck(app, option));
 app.listen(5003);
 ```
 
-## emptyInputCheck
+> ## emptyInputCheck
 
 This middleware checks for all empty inputs to all routes (unless used at a router level) by checking the **body** of both POST and GET requests.
 
@@ -84,7 +86,7 @@ app.use(
 );
 
 //The emptyInputCheck Middleware
-//It's important that we place the our middleware after the bodyParser middleware
+//It's important that we place our middleware after the bodyParser middleware
 //Make sure you call the emptyInputCheck middleware before the routes are loaded
 app.use(
   emptyInputCheck({
@@ -102,7 +104,7 @@ app.use('/', example);
 app.listen(5003);
 ```
 
-## Tests
+> ## Tests
 
 The poject uses **Jest** for testing.
 
@@ -115,6 +117,6 @@ $ npm i
 $ npm test
 ```
 
-## License
+> ## License
 
 [Apache License 2.0](https://github.com/algo7/express-suite/blob/master/LICENSE)
