@@ -44,13 +44,11 @@ const example = require('./routes/example');
 app.use('/', example);
 
 //The routeCheck middleware config option
-//The path refers to the custom route you want to redirect the requests to
-const option = {
-  path: '/PnF',
-};
+//The redirectPath refers to the custom route you want to redirect the requests to
+const options = { redirectPath: '/PnF' };
 
 //It's important to use the routeCheck middleware after all routes are loaded
-app.use(routeCheck(app, option));
+app.use(routeCheck(app, options));
 
 //Start the server
 app.listen(5003);

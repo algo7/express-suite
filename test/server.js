@@ -48,8 +48,10 @@ app.post('/', (req, res) => {
     });
 });
 
+const options = { redirectPath: '/PnF', };
+
 //The routeCheck middleware
-app.use(routeCheck(app, { redirectPath: '/PnF', }));
+app.use(routeCheck(app, options));
 
 
 const server = app.listen(PORT);
