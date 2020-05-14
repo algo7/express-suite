@@ -115,6 +115,7 @@ const emptyInputCheck = ({
 
         //Array for storing non-0 values
         let checkZ = [];
+        let zArray = [];
 
         //Extract the value from the request body
         for (const key in body) {
@@ -125,11 +126,13 @@ const emptyInputCheck = ({
                 checkZ.push(element);
             }
 
+            if (element === 0) {
+                zArray.push(element);
+            }
         }
 
-        //Make sure the array is not empty
-        if (checkZ.length === 0) {
-
+        //Make sure the array is not empty (0 counts as a valid value)
+        if (checkZ.length === 0 && zArray.length === 0) {
             res.status(400).json({ msg: emptyBodyMsg, });
             return;
         }

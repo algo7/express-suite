@@ -4,7 +4,7 @@
   "description": "A collection of useful express middlewares",
   "main": "app.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,12 @@
     "express": "^4.17.1",
     "jest": "^26.0.1",
     "body-parser": "^1.19.0"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./app.js"
+    ]
   }
 }
