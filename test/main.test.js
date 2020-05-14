@@ -57,7 +57,6 @@ describe('Testing the Input Validation Module', () => {
         });
     });
 
-
     const request = {
         method: '',
         url: 'http://localhost:5003/',
@@ -109,11 +108,13 @@ describe('Testing the Input Validation Module', () => {
                 testField: 'test_data',
                 testField1: '',
             };
-            expect.assertions(1);
+            expect.assertions(2);
             return axios(request)
                 .catch(err => {
                     const errMsg = err.response.data.msg;
+                    const missingField = err.response.data.field;
                     expect(errMsg).toBe('Some fields are missing!');
+                    expect(missingField).toBe('testField1');
                 });
         });
     });
@@ -162,11 +163,13 @@ describe('Testing the Input Validation Module', () => {
                 testField: 'test_data',
                 testField1: '',
             };
-            expect.assertions(1);
+            expect.assertions(2);
             return axios(request)
                 .catch(err => {
                     const errMsg = err.response.data.msg;
+                    const missingField = err.response.data.field;
                     expect(errMsg).toBe('Some fields are missing!');
+                    expect(missingField).toBe('testField1');
                 });
         });
     });

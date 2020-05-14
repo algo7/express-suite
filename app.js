@@ -84,6 +84,7 @@ const emptyInputCheck = ({
     checkGet = true,
     emptyBodyMsg = 'The request body is empty!',
     emptyFieldMsg = 'Some fields are missing!',
+    supressFieldKey = false,
 } = {}) => {
 
     return (req, res, next) => {
@@ -102,7 +103,6 @@ const emptyInputCheck = ({
             }
         }
 
-
         //Deconstruct the request to get the body out
         const { body, } = req;
 
@@ -116,6 +116,7 @@ const emptyInputCheck = ({
         //Array for storing non-0 values
         let checkZ = [];
         let zArray = [];
+        let KeyArray = [];
 
         //Extract the value from the request body
         for (const key in body) {
@@ -124,6 +125,7 @@ const emptyInputCheck = ({
 
             if (element !== 0) {
                 checkZ.push(element);
+                KeyArray.push(key);
             }
 
             if (element === 0) {
@@ -140,13 +142,25 @@ const emptyInputCheck = ({
         //Check for falsy values in the array without 0s
         for (let index = 0; index < checkZ.length; index++) {
             const nonZinput = checkZ[index];
+            const nonZinputKey = KeyArray[index];
 
             //Return false if there is any falsy value
-            if (!nonZinput) {
-
-                res.status(400).json({ msg: emptyFieldMsg, });
+            if (!nonZinput && supressFieldKey === false) {
+                res.status(400).json({
+                    msg: emptyFieldMsg,
+                    field: nonZinputKey,
+                });
                 return;
             }
+
+            //Supress field key
+            if (!nonZinput) {
+                res.status(400).json({
+                    msg: emptyFieldMsg,
+                });
+                return;
+            }
+
 
         }
 

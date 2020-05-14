@@ -62,13 +62,33 @@ Note: 0 does count as a valid input.
 
 > Default Error Messages:
 
-1. Requests with an empty body will be met with a **400** and the message: `{ msg: 'The request body is empty!'}`.
+1. Requests with an empty body will be met with a **400** and the message:
 
-2. Request with empty fields in the body will be met with a **400** and the message: `{msg:'Some fields are missing!'}`.
+```javascript
+{
+  msg: 'The request body is empty!';
+}
+```
+
+2. Request with empty fields in the body will be met with a **400** and the message:
+
+```javascript
+{
+  msg: 'The request body is empty!',
+  field:'key of the missing field'
+}
+```
+
+```javascript
+//supressFieldKey=true
+{
+  msg: 'The request body is empty!',
+}
+```
 
 You can specify the middleware to skip the check for **GET** requests in the config option.
 
-Custom error message for each scenario above can also be set like the example below:
+Custom error message for each scenario above and whether to supress the filed key can be specified like the example below:
 
 ```javascript
 //Dependencies
@@ -97,6 +117,7 @@ app.use(
     checkGet: true, //Wether to check the GET requests or not
     emptyBodyMsg: 'Err Msg 1', //Custom msg for empty body
     emptyFieldMsg: 'Err Msg 2', //Custom msg for missing fields
+    supressFieldKey = false, //To supress the key of the missing field
   }),
 );
 
