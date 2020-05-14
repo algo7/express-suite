@@ -4,7 +4,7 @@
   "description": "A collection of useful express middlewares",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
