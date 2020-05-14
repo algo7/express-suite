@@ -82,6 +82,8 @@ const routeCheck = (app, opt) => {
  */
 const emptyInputCheck = ({
     checkGet = true,
+    emptyBodyMsg = 'The request body is empty!',
+    emptyFieldMsg = 'Some fields are missing!',
 }) => {
 
     return (req, res, next) => {
@@ -107,14 +109,14 @@ const emptyInputCheck = ({
         //Check if the input is any flase value 
         //(when nothing is pass into the middleware)
         if (!body) {
-
-            res.status(400).json({ msg: 'Some fields are missing!', });
+            res.status(400).json({ msg: 'The middleware requires an input', });
             return;
         }
 
         //Array for storing non-0 values
         let checkZ = [];
 
+        //Extract the value from the request body
         for (const key in body) {
 
             const element = body[key];
@@ -128,7 +130,7 @@ const emptyInputCheck = ({
         //Make sure the array is not empty
         if (checkZ.length === 0) {
 
-            res.status(400).json({ msg: 'Some fields are missing!', });
+            res.status(400).json({ msg: emptyBodyMsg, });
             return;
         }
 
@@ -139,7 +141,7 @@ const emptyInputCheck = ({
             //Return false if there is any falsy value
             if (!nonZinput) {
 
-                res.status(400).json({ msg: 'Some fields are missing!', });
+                res.status(400).json({ msg: emptyFieldMsg, });
                 return;
             }
 

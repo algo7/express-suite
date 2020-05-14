@@ -62,9 +62,15 @@ This middleware checks for all empty inputs to all routes (unless used at a rout
 
 Note: 0 does count as a valid input.
 
-All empty inputs will be met with a **400** and the message: `{ msg: 'Some fields are missing!' }`.
+> Default Error Messages:
+
+1. Requests with an empty body will be met with a **400** and the message: `{ msg: 'The request body is empty!'}`.
+
+2. Request with empty fields in the body will be met with a **400** and the message: `{msg:'Some fields are missing!'}`.
 
 You can specify the middleware to skip the check for **GET** requests in the config option.
+
+Custom error message for each scenario above can also be set like the example below:
 
 ```javascript
 //Dependencies
@@ -86,11 +92,13 @@ app.use(
 );
 
 //The emptyInputCheck Middleware
-//It's important that we place our middleware after the bodyParser middleware
+//It's important that we place the emptyInputCheck Middleware after the bodyParser middleware
 //Make sure you call the emptyInputCheck middleware before the routes are loaded
 app.use(
   emptyInputCheck({
     checkGet: true, //Wether to check the GET requests or not
+    emptyBodyMsg: 'Err Msg 1', //Custom msg for empty body
+    emptyFieldMsg: 'Err Msg 2', //Custom msg for missing fields
   }),
 );
 

@@ -75,10 +75,25 @@ describe('Testing the Input Validation Module', () => {
             });
     });
 
-    test('Sending Empty GET Request', () => {
+    test('Sending GET Request with an Empty Body', () => {
 
         request.method = 'GET';
         request.data = '';
+        expect.assertions(1);
+        return axios(request)
+            .catch(err => {
+                const errMsg = err.response.data.msg;
+                expect(errMsg).toBe('The request body is empty!');
+            });
+    });
+
+    test('Sending GET Request with a Body with Missing Fields', () => {
+
+        request.method = 'GET';
+        request.data = {
+            testField: 'test_data',
+            testField1: '',
+        };
         expect.assertions(1);
         return axios(request)
             .catch(err => {
@@ -87,12 +102,11 @@ describe('Testing the Input Validation Module', () => {
             });
     });
 
+
     test('Sending POST Request', () => {
 
         request.method = 'POST';
-        request.data = {
-            testField: 'test_data',
-        };
+        delete request.data.testField1;
         expect.assertions(1);
         return axios(request)
             .then(data => {
@@ -101,9 +115,25 @@ describe('Testing the Input Validation Module', () => {
             });
     });
 
-    test('Sending Empty POST Request', () => {
+    test('Sending POST Request with an Empty Body', () => {
+
         request.method = 'POST';
         request.data = '';
+        expect.assertions(1);
+        return axios(request)
+            .catch(err => {
+                const errMsg = err.response.data.msg;
+                expect(errMsg).toBe('The request body is empty!');
+            });
+    });
+
+    test('Sending POST Request with a Body with Missing Fields', () => {
+
+        request.method = 'POST';
+        request.data = {
+            testField: 'test_data',
+            testField1: '',
+        };
         expect.assertions(1);
         return axios(request)
             .catch(err => {
