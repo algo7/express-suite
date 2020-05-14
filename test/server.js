@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { routeCheck, emptyInputCheck, } = require('../app');
+
 //Global Constant
 const PORT = 5003;
 
@@ -48,7 +49,7 @@ app.post('/', (req, res) => {
 });
 
 //The routeCheck middleware
-app.use(routeCheck(app, { path: '/PnF', }));
+app.use(routeCheck(app, { redirectPath: '/PnF', }));
 
 
 const server = app.listen(PORT);

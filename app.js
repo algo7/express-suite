@@ -2,15 +2,15 @@
 /**
 * Takes in the **express()** function
 * @param {Object} app - The **express()** function
-* @param {Object} [opt] - The options
-* @param {String} [opt.path] - The redirect path
 * @example  //For the option
-{ path: '/PnF' }
+{ redirectPath: '/PnF' }
 *
 * @returns {function():void}
 */
 
-const routeCheck = (app, opt) => {
+const routeCheck = (app, {
+    redirectPath = '',
+} = {}) => {
 
     //Error checking
     if (!app._router) {
@@ -63,10 +63,10 @@ const routeCheck = (app, opt) => {
         //Redirect to 404 PnF if match failed
         if (!pathExists) {
 
-            if (!opt) {
+            if (!redirectPath) {
                 return res.sendStatus(404);
             }
-            return res.redirect(opt.path);
+            return res.redirect(redirectPath);
         }
 
         //If all good
@@ -84,7 +84,7 @@ const emptyInputCheck = ({
     checkGet = true,
     emptyBodyMsg = 'The request body is empty!',
     emptyFieldMsg = 'Some fields are missing!',
-}) => {
+} = {}) => {
 
     return (req, res, next) => {
 

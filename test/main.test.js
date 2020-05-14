@@ -1,7 +1,6 @@
 /**
  * @jest-environment node
  */
-
 const { server, } = require('./server');
 const axios = require('axios').default;
 
