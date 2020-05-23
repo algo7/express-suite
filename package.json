@@ -14,7 +14,13 @@
     "express",
     "middlewares",
     "validation",
-    "input"
+    "input",
+    "404",
+    "error",
+    "error handler",
+    "not found",
+    "route",
+    "routing"
   ],
   "author": "algo7",
   "license": "Apache License 2.0",
