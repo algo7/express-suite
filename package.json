@@ -15,6 +15,7 @@
     "middlewares",
     "validation",
     "input",
+    "input validation",
     "404",
     "error",
     "error handler",
