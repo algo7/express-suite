@@ -96,7 +96,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 //Require the routeCheck Middleware
-const { emptyInputCheck } = require('../app');
+const { emptyInputCheck } = require('express-suite');
 
 //Initialize the App
 const app = express();
