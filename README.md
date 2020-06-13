@@ -117,7 +117,7 @@ app.use(
     checkGet: true, //Wether to check the GET requests or not
     emptyBodyMsg: 'Err Msg 1', //Custom msg for empty body
     emptyFieldMsg: 'Err Msg 2', //Custom msg for missing fields
-    supressFieldKey = false, //To supress the key of the missing field
+    supressFieldKey: false, //To supress the key of the missing field
   }),
 );
 
@@ -143,6 +143,10 @@ $ cd express-suite
 $ npm i
 $ npm test
 ```
+
+## Known Issues
+
+express-suite's `emptyInputCheck` function does not work well with [Multer](https://www.npmjs.com/package/multer)
 
 ## License
 

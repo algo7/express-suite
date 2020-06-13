@@ -81,7 +81,7 @@ const routeCheck = (app, {
  * @returns {function():void}
  */
 const emptyInputCheck = ({
-    checkGet = true,
+    checkGet = false,
     emptyBodyMsg = 'The request body is empty!',
     emptyFieldMsg = 'Some fields are missing!',
     supressFieldKey = false,
