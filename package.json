@@ -4,7 +4,8 @@
   "description": "A collection of useful express middlewares",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "graph": "depcruise -c .dependency-cruiser.js --output-type dot * | dot -T svg > dependencygraph.svg"
   },
   "repository": {
     "type": "git",
