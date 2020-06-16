@@ -144,6 +144,12 @@ $ npm i
 $ npm test
 ```
 
+## Depedency Graph
+
+![DepGraph](https://raw.githubusercontent.com/algo7/express-suite/master/dependencygraph.svg)
+
+Generated using [dependency-cruiser](https://www.npmjs.com/package/dependency-cruiser)
+
 ## Known Issues
 
 express-suite's `emptyInputCheck` function does not work well with [Multer](https://www.npmjs.com/package/multer)
