@@ -144,6 +144,17 @@ describe('Testing the Input Validation Module', () => {
                 });
         });
 
+        test('Sending POST Request with a Body that Contains a Field with Value false', () => {
+            request.method = 'POST';
+            request.data.testField = false;
+            expect.assertions(1);
+            return axios(request)
+                .then(data => {
+                    const resBd = data.data.msg;
+                    expect(resBd).toBe(false);
+                });
+        });
+
         test('Sending POST Request with an Empty Body', () => {
 
             request.method = 'POST';

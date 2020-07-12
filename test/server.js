@@ -1,5 +1,6 @@
 //Dependencies
 const express = require('express');
+const axios = require('axios').default;
 const bodyParser = require('body-parser');
 const { routeCheck, emptyInputCheck, } = require('../app');
 
@@ -15,6 +16,10 @@ app.use(bodyParser.json({
     extended: true,
 }));
 
+app.use(bodyParser.urlencoded({
+    limit: '5mb',
+    extended: true,
+}));
 //Headers Settings
 app.all('*', (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5003');
@@ -52,7 +57,6 @@ const options = { redirectPath: '/PnF', };
 
 //The routeCheck middleware
 app.use(routeCheck(app, options));
-
 
 const server = app.listen(PORT);
 

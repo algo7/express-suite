@@ -113,9 +113,13 @@ const emptyInputCheck = ({
             return;
         }
 
-        //Array for storing non-0 values
+        // Array for storing non-0 values
         let checkZ = [];
+        // Array for storing 0s
         let zArray = [];
+        // Array for storing falses
+        let fArray = [];
+        // Array for storing the keys
         let KeyArray = [];
 
         //Extract the value from the request body
@@ -123,9 +127,13 @@ const emptyInputCheck = ({
 
             const element = body[key];
 
-            if (element !== 0) {
+            if (element !== 0 && element !== false) {
                 checkZ.push(element);
                 KeyArray.push(key);
+            }
+
+            if (element === false) {
+                fArray.push(element);
             }
 
             if (element === 0) {
@@ -133,13 +141,13 @@ const emptyInputCheck = ({
             }
         }
 
-        //Make sure the array is not empty (0 counts as a valid value)
-        if (checkZ.length === 0 && zArray.length === 0) {
+        //Make sure the array is not empty (0 & false count as valid values)
+        if (checkZ.length === 0 && zArray.length === 0 && fArray.length === 0) {
             res.status(400).json({ msg: emptyBodyMsg, });
             return;
         }
 
-        //Check for falsy values in the array without 0s
+        //Check for falsy values in the array without 0s and falses
         for (let index = 0; index < checkZ.length; index++) {
             const nonZinput = checkZ[index];
             const nonZinputKey = KeyArray[index];
